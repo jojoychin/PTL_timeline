@@ -44,7 +44,7 @@ var aiCommands = {
         'response': "Okay, ending your meeting."
     },
     "schedule meeting": {
-        'triggers': ['schedule', 'schedule meeting', 'schedule a meeting', 'reschedule', 'schedule a new meeting'],
+        'triggers': ['schedule', 'schedule meeting', 'schedule a meeting', 'reschedule', 'schedule a new meeting', 'add meeting', 'add a meeting time'],
         'matchReq': 2,//not used right now
         'response': "When would you like to schedule that?"
     },
