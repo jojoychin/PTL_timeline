@@ -1,4 +1,7 @@
-/* Your code starts here */
+/* Parsons Teleprsence Lab project for Vonage (code by Joanna Chin)
+code based on apon palanuwak's socket.io course;
+code credit also to Bryan Collinsworth
+*/
 
 var app = {};
 
@@ -49,35 +52,26 @@ app.init = function() {
 
     };
 
+    //keeping every eventlistener 
     var attachEvents = function() {
-        var state = 0;
-        //keeping every eventlistener 
+        // var state = 0;
+
+        //send chat on button click
         $('#js-btn-send').on('click', function() {
             //after user clicks
-            var chat_msg = $('#js-ipt-text').val();
-            console.log(chat_msg);
-            var re = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;
-            var isScript;
-            isScript = re.test(chat_msg);
-            //.emit submits or sends an event
-            //you can name it anything and you can
-            //attach anything (string, num etc.)
-            //but usually it's an object
-            socket.emit('message', {
-                // message_one: "hey lovely.",
-                // message_two: "hola!",
-                user: name,
-                msg: chat_msg,
-                state: state,
-                timestamp: 'now'
-            });
-            // Reset input field
-            $('#js-ipt-text').val('');
+            sendMsg(event);
         });
 
+        //send chat on enter
         $('#chat-input').keyup(function(event){
             if(event.keyCode == 13){
-             var chat_msg = $('#js-ipt-text').val();
+                sendMsg(event);
+            }
+        });
+
+    //check chat message being sent and send it
+    var sendMsg = function(e) {
+        var chat_msg = $('#js-ipt-text').val();
              console.log('enter pressed & value is: '+chat_msg);
              var re = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;
             var isScript;
@@ -94,8 +88,7 @@ app.init = function() {
             });
             // Reset input field
             $('#js-ipt-text').val('');
-            }
-        });
+    }
 
     //mousemove event test
     // $(window).on('mousemove', function(res){
